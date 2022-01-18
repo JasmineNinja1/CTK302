@@ -4,7 +4,7 @@ function setup() {
 }
 
 function draw() {
-  background('blue') ;
+  background('red') ;
   fill('white') ;
   textSize(32) ;
   text("PANTS!!!!", 250, 250) ;
