@@ -32,6 +32,7 @@ function draw() {
       break;
 
     case 1:
+    background('red');
       text("Listen to song 1", 100, 100);
       break;
 
@@ -42,6 +43,7 @@ function draw() {
       break;
 
     case 3:
+    background('green') ;
       text("Listen to song 2", 100, 100);
       break;
 
@@ -52,6 +54,7 @@ function draw() {
       break;
 
     case 5:
+    background('pink');
       text("Listen to song 3", 100, 100);
       break;
 
