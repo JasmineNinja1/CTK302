@@ -15,7 +15,7 @@ function draw() {
       background('yellow');
       fill('black');
       textSize('38');
-      text("why did the chicken cross the road?" width/2, height/2, 100, 100);
+      text("why did the chicken cross the road?", width/2, height/2, 100, 100);
 
       break;
 
@@ -23,7 +23,7 @@ function draw() {
       background('red');
       fill('black');
       textSize('32');
-      text("To get to the other side!!" width/2, height/2, 100, 100);
+      text("To get to the other side!!", width/2, height/2, 100, 100);
       break;
 
   }
