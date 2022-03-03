@@ -23,23 +23,23 @@ function draw() {
     case 0:
       image(me, 100, 200, 200, 300);
       fill('black');
-      textSize('32');
-      text("click! Hello! This is me.", width / 2, height / 2, 100, 100);
+      textSize('52');
+      text("click! Hello! This is me.", width / 2, height / 2, 300, 300);
 
       break;
 
     case 1:
       image(me2, 100, 200, 200, 300);
       fill('black');
-      textSize('32');
-      text("Click! Woohoo! We are finally on Spring Break. It's about time.", width / 2, height / 2, 100, 100);
+      textSize('52');
+      text("Click! Woohoo! We are finally on Spring Break. It's about time.", width / 2, height / 2, 300, 300);
       break;
 
     case 2:
       image(me3, 100, 200, 200, 300);
       fill('black');
-      textSize('32');
-      text("Timer! Wait a minute... Does that mean we have to go back to school next week?!", width / 2, height / 2, 100, 100);
+      textSize('52');
+      text("Timer! Wait a minute... Does that mean we have to go back to school next week?!", width / 2, height / 2, 300, 300);
       timer++;
       if (timer > 3 * 60) {
         timer = 0;
@@ -50,8 +50,8 @@ function draw() {
     case 3:
       image(me4, 100, 200, 200, 300);
       fill('black');
-      textSize('32');
-      text("Click! Crap!!", width / 2, height / 2, 100, 100);
+      textSize('52');
+      text("Click! Crap!!", width / 2, height / 2, 300, 300);
       timer++;
       if (timer > 3 * 60) {
         timer = 0;
