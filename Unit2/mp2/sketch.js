@@ -1,73 +1,68 @@
 let state = 0;
 let timer = 0;
-let x = 0;
-let velocity = 10;
+let me;
+let me2;
+let me3;
+let me4;
 
 function setup() {
-  createCanvas(800, 800);
-  ellipseMode(CENTER);
-  rectMode(CENTER);
+  createCanvas(600, 600);
+
+  me = loadImage("assets/me.jpg");
+  me2 = loadImage("assets/me2.jpg");
+  me3 = loadImage("assets/me3.jpg");
+  me4 = loadImage("assets/me4.jpg");
 }
 
 function draw() {
 
   background(100);
-  fill('yellow');
-  rect(width / 2, height / 2, 200, 600);
-
-  // car code
-  fill('blue');
-  rect(x, 750, 75, 20);
-  x = x + velocity;
-  if (x > width) {
-    x = 0;
-  }
 
   switch (state) {
 
-    case 0: // red
-      text("0", 100, 100);
-      fill('red');
-      ellipse(width / 2, height / 2 - 170, 150, 150);
-      fill('grey');
-      ellipse(width / 2, height / 2, 150, 150);
-      ellipse(width / 2, height / 2 + 170, 150, 150);
-      velocity = 0;
+    case 0:
+      image(me, 100, 200, 200, 300);
+      fill('black');
+      textSize('32');
+      text("Hello! This is me.", width / 2, height / 2, 100, 100);
+
       break;
 
-    case 1: // green
-      text("1", 100, 100);
-      fill('grey');
-      ellipse(width / 2, height / 2 - 170, 150, 150);
-      ellipse(width / 2, height / 2, 150, 150);
-      fill('green');
-      ellipse(width / 2, height / 2 + 170, 150, 150);
-      velocity = 10;
+    case 1:
+      image(me2, 100, 200, 200, 300);
+      fill('black');
+      textSize('32');
+      text("Woohoo! We are finally on Spring Break. It's about time.", width / 2, height / 2, 100, 100);
       break;
 
-    case 2: // yellow
-      text("2", 100, 100);
-      fill('grey');
-      ellipse(width / 2, height / 2 - 170, 150, 150);
-      fill('yellow');
-      ellipse(width / 2, height / 2, 150, 150);
-      fill('grey')
-      ellipse(width / 2, height / 2 + 170, 150, 150);
-      velocity = 5;
+    case 2:
+      image(me3, 100, 200, 200, 300);
+      fill('black');
+      textSize('32');
+      text("Wait a minute... Does that mean we have to go back to school next week?!", width / 2, height / 2, 100, 100);
+      timer++;
+      if (timer > 3 * 60) {
+        timer = 0;
+        state = 3;
+      }
       break;
 
-  }
-
-  timer = timer + 1;
-  if (timer > 100) {
-    timer = 0;
-    state++;
-    if (state > 2) state = 0;
+    case 3:
+      image(me4, 100, 200, 200, 300);
+      fill('black');
+      textSize('32');
+      text("Crap!!", width / 2, height / 2, 100, 100);
+      timer++;
+      if (timer > 3 * 60) {
+        timer = 0;
+        state = 0;
+      }
+      break;
   }
 }
 
 function mouseReleased() {
   state++;
-  if (state > 2) state = 0;
+  if (state > 3) state = 0;
 
 }
