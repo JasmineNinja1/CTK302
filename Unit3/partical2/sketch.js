@@ -23,7 +23,7 @@ function draw() {
       cars.splice(i, 1);
     }
   }
-}
+} 
 
 
 class Car {
