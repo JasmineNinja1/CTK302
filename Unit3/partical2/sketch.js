@@ -1,9 +1,9 @@
 let cars = [];
-let bananas;
+//let bananas;
 
 function setup() {
   createCanvas(500, 500);
-  bananas = loadImage("assets/bananas.jpg");
+//  bananas = loadImage("assets/bananas.jpg");
   //
   // for (let i = 0; i < 20; i++) {
   //   cars.push(new Car());
@@ -13,7 +13,7 @@ function setup() {
 
 function draw() {
   background('grey');
-  image(bananas, width/2, 160, 200, 100);
+  //image(bananas, width/2, 160, 200, 100);
   cars.push(new Car());
 
   for (let i = 0; i < cars.length; i++) {
@@ -23,7 +23,7 @@ function draw() {
       cars.splice(i, 1);
     }
   }
-} 
+}
 
 
 class Car {
