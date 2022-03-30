@@ -6,30 +6,34 @@ let bowl;
 let orange;
 let board;
 let orangeLeft = 0;
-// let song1;
-// let lostsound;
+let song1;
+let song2;
+let song3;
 
-// function preload() {
-//   lostsound = loadSound('assets/loss.wav');
-//   lostsound.stop();
-//
-//   song1 = loadSound("assets/cute.mp3");
-//   song1.loop();
-//   song1.pause();
-// }
+function preload() {
+  // song3
+  song2 = loadSound("assets/lose.mp3");
+  song1 = loadSound("assets/funday.mp3");
+song3 = loadSound("assets/win.mp3");
+}
 
 function setup() {
-  createCanvas(800, 800);
+  createCanvas(1000, 600);
 
-  bowl = loadImage("assets/bowl.jpg");
-  orange = loadImage("assets/orange.jpg");
+  bowl = loadImage("assets/bowl.png");
+  orange = loadImage("assets/orange.png");
   board = loadImage("assets/board.jpg");
 
   for (let i = 0; i < 40; i++) {
-    //cars.push(new Car());
+    cars.push(new Car());
   }
   frogPos = createVector(width / 2, height - 100);
   imageMode(CENTER);
+//  textMode(CENTER);
+
+  // song1.loop();
+  // song1.pause();
+  //  song2.pause();
 }
 
 function draw() {
@@ -37,61 +41,63 @@ function draw() {
   switch (state) {
 
        case 0:
-      // song1.play();
-      myState = 1
+      song1.loop();
+      state = 1
       break;
 
     case 1: // menu screen
       background("grey");
-      image(board, width / 2, height / 2);
+      image(board, width, height);
       textSize(58);
-      text("Fruit Basket", 100, 100);
+      fill('white');
+      text("Fruit Basket", 0, 100);
       textSize(42);
-      text("Start Game", width/2, height/2);
+      fill('white');
+      text("Start Game", 400, height/2);
+      textSize(28);
+      fill('white');
+      text("Click to Start", 400, 360);
       break;
 
     case 2: // game play
-      image(board, width / 2, height / 2);
+      image(board, width, height);
       game();
       timer++;
       if (timer > 600) {
-        state = 3;
+        state = 5;
         timer = 0;
       }
       break;
 
     case 3: // win screen
-    textSize(48);
-    text("Winner", width/2, height/2);
+    // textSize(48);
+    // text("Winner", width/2, height/2);
+          song1.pause();
+          song3.play();
+          state = 4;
       break;
 
-      // case 4:
-      // song1.stop();
-      // fanfare.play();
-      // myState = 5
-      // break;
+      case 4: // win state
+      textSize(48);
+      text("Winner", 400, height/2);
+      break;
 
       case 5:
-      // song1.pause();
-      myState = 6
+      song1.pause();
+      song2.play();
+      state = 6
       break;
 
-    case 6:
-      // lostsound.play();
-      // song1.pause();
-      myState = 7
-      break;
-
-    case 7: // lose screen
+    case 6: // lose screen
     textSize(48);
-    text("Gamer Over", width/2, height/2);
+    text("Game Over", 400, height/2);
       break;
   }
 }
 
 function game() {
   background("grey");
-  image(board, windowWidth, windowHeight);
+  image(board, width, height);
 
   for (let i = 0; i < cars.length; i++) {
     cars[i].display();
@@ -103,15 +109,15 @@ function game() {
     }
   }
 
-  //if (cars.length == 0) {
-if (orangeLeft ==0) {
+  if (cars.length == 0) {
+// if (orangeLeft == 0) {
   state = 3;
 }
 
-  image(bowl, frogPos.x, frogPos.y, 120, 120);
+  image(bowl, frogPos.x, frogPos.y, 120, 86);
   textSize(20);
   fill('white');
-  text("Orange Left = "+orangeLeft, 30, 30);
+  text("Orange Left = "+cars.length, 30, 30);
   checkForKeys();
 }
 
@@ -138,7 +144,7 @@ class Car {
   //  ellipse(this.pos.x + 60, this.pos.y + 30, 30, 30);
 
     //textSize(this.size);
-    image(orange, this.pos.x, this.pos.y);
+    image(orange, this.pos.x, this.pos.y, this.size, this.size);
   }
 
   move() {
@@ -160,10 +166,14 @@ function checkForKeys() {
 function resetTheGame() {
   cars = [];
   orangeLeft = 0;
-  for (let i = 0; i < 5; i++) {
-    cars.push(new car());
+  for (let i = 0; i < 40; i++) {
+    cars.push(new Car());
   }
   timer = 0;
+  song1.pause();
+  song2.pause();
+  song3.pause();
+//  song1.play();
 }
 
 function mouseReleased() {
@@ -177,15 +187,14 @@ function mouseReleased() {
       state = 0;
       break;
 
-    case 7: // lose state
+    case 6: // lose state
       resetTheGame();
-      // lostsound.pause();
+      //song2.pause();
       state = 0;
       break;
 
   }
 }
-
-// function touchStarted() {
-//   getAudioContext().resume();
-// }
+function touchStarted() {
+  getAudioContext().resume();
+}
