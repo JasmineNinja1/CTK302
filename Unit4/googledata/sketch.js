@@ -27,7 +27,7 @@ function gotData(data) {
       new Bubble(
         data[i]["What's your favorite food?"],
         data[i]["What's your favorite color?"],
-        data[i]["PS5 or Xbox Series X?"],
+        data[i]["PS5 or Xbox Series X"],
         data[i]["Name"])); // THESE NEED TO MATCH SPREADSHEET
 
   }
@@ -57,16 +57,16 @@ class Bubble {
   display() {
     stroke("black");
     noFill();
-    ellipse(this.pos.x, this.pos.y+10, 120, 120);
+    ellipse(this.pos.x, this.pos.y + 10, 120, 120);
     fill("blue");
     text(
-      this.name + "\n" + this.color + "\n" + this.system + "\n" + this.food,
+      this.color + "\n" + this.food + "\n" + this.system + "\n" + this.name,
       this.pos.x,
       this.pos.y
     );
 
-    this.pos.add(this.vel) ;
-    if (this.pos.x > width) this.pos.x = 0 ;
+    this.pos.add(this.vel);
+    if (this.pos.x > width) this.pos.x = 0;
 
   }
 
