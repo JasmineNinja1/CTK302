@@ -1,6 +1,6 @@
 var bubbles = [];
 let url = "";
-let pizza;
+//let flying pizza;
 
 function setup() {
   //let key = "1xG5lzBtJV3gK61ZE_qdku3ms9-pCJqwl0T8RVHI11m0";
@@ -15,6 +15,7 @@ function setup() {
   textAlign(CENTER);
   ellipseMode(CENTER);
   rectMode(CENTER);
+//  flying pizza = loadImage("assets/flying pizza.png");
 }
 
 // The data comes back as an array of objects

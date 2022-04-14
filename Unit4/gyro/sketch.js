@@ -1,20 +1,24 @@
 /* For mobile phones - accesses accelerometer and gyroscope.
 Make sure you turn on orientation lock on your iPhone or Android device. */
 
-let alpha = 0, beta = 0 , gamma = 0; // gyroscope variablers
-let bunnyImage;
+let balance = 0,
+  left = 0,
+  up = 0; // gyroscope variablers
+let kitten;
 let xPosition = 0;
 let yPosition = 0;
-let x = 0, y = 0, z = 0 ; // accelerometer data
-
+let x = 0,
+  y = 0,
+  z = 0; // accelerometer data
+let square;
 
 function setup() {
 
   createCanvas(windowWidth, windowHeight);
+  square = loadFont("assets/square.ttf");
 
 
-
-  bunnyImage = loadImage("assets/bunny.jpeg");
+  kitten = loadImage("assets/kitten.png");
   imageMode(CENTER);
   rectMode(CENTER);
 
@@ -27,8 +31,8 @@ function draw() {
   // the map command !!!!
   // takes your variable and maps it from range 1 to range 2
   // map(yourVar, range1_x, range1_y, range2_x, range2_y) ;
-  xPosition = map(gamma, -60, 60, 0, width);
-  yPosition = map(beta, -30, 30, 0, height);
+  xPosition = map(left, -60, 60, 0, width);
+  yPosition = map(up, -30, 30, 0, height);
 
   push(); // before you use translate, rotate, or scale commands, push and then pop after
 
@@ -36,23 +40,24 @@ function draw() {
 
   rotate(radians(alpha)); // rotate the bunny depending on the alpha intake
 
-  image(bunnyImage, 0, 0, 500, 500);
+  image(kitten, 0, 0, 500, 500);
   // rect(0, 0, 100, 100) ;
   pop();
 
 
   // Text commands that display debugging data
   textAlign(LEFT);
-  textSize(20);
+  textFont(square);
+  textSize(48);
   fill('black');
   text("orientation data:", 25, 25);
-  textSize(15);
-  text("alpha: " + alpha, 25, 50);
-  text("beta: " + beta, 25, 70);
-  text("gamma: " + gamma, 25, 90);
-  textSize(20);
+  textSize(32);
+  text("balance: " + balance, 25, 50);
+  text("left: " + left, 25, 70);
+  text("up: " + up, 25, 90);
+  textSize(48);
   text("acceleration data:", 25, 125);
-  textSize(15);
+  textSize(32);
   text("x = " + x.toFixed(2), 25, 150); // .toFixed means just show (x) decimal places
   text("y = " + y.toFixed(2), 25, 170);
   text("z = " + z.toFixed(4), 25, 190);
@@ -62,7 +67,7 @@ function draw() {
   noStroke();
   textSize(300);
   textAlign(CENTER);
-  text("ctk", width / 2, height / 2);
+  text("Kittens are soft", width / 2, height / 2);
 
 }
 
