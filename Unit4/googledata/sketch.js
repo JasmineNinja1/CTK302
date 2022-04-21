@@ -1,6 +1,12 @@
 var bubbles = [];
 let url = "";
-//let flying pizza;
+let playful;
+let flying;
+let small;
+
+function preload() {
+  small = loadSound("assets/small.mp3");
+}
 
 function setup() {
   //let key = "1xG5lzBtJV3gK61ZE_qdku3ms9-pCJqwl0T8RVHI11m0";
@@ -15,7 +21,9 @@ function setup() {
   textAlign(CENTER);
   ellipseMode(CENTER);
   rectMode(CENTER);
-//  flying pizza = loadImage("assets/flying pizza.png");
+  playful = loadFont("assets/playful.ttf");
+  flying = loadImage("assets/flying.png");
+  small.play();
 }
 
 // The data comes back as an array of objects
@@ -37,7 +45,6 @@ function gotData(data) {
 
 function draw() {
   background("pink");
-
   // // iterate through the bubbles and display the objects!
   for (let i = 0; i < bubbles.length; i++) {
     bubbles[i].display();
@@ -53,14 +60,16 @@ class Bubble {
     this.system = system;
     this.name = name;
     this.pos = createVector(random(width), random(height));
-    this.vel = createVector(random(2, 5), 0);
+    this.vel = createVector(random(-5, 5), 0);
   }
 
   display() {
+    image(flying, this.pos.x, this.pos.y + 10, 120, 120);
     stroke("black");
-    noFill();
-    ellipse(this.pos.x, this.pos.y + 10, 120, 120);
-    fill("blue");
+    fill("purple");
+    //ellipse(this.pos.x, this.pos.y + 10, 120, 120);
+    fill("purple");
+    textFont(playful);
     text(
       this.color + "\n" + this.food + "\n" + this.system + "\n" + this.name,
       this.pos.x,
